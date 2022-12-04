@@ -8,10 +8,10 @@
 using namespace std;
 class NameVector {
 private:
-vector<double> vector;
+::vector<double> vector;
 string name;
 public:
-    std::vector<double> GetVector();
+    ::vector<double> GetVector();
     string GetName();
     void SetVector (const ::vector<double>& vector1);
     void SetName(string name1);
