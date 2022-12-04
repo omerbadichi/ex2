@@ -11,6 +11,7 @@ private:
 ::vector<double> vector;
 string name;
 public:
+    NameVector(string name,::vector<double> vector);
     ::vector<double> GetVector();
     string GetName();
     void SetVector (const ::vector<double>& vector1);
