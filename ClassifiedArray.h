@@ -18,8 +18,12 @@ private:
 
 public:
     bool IsValidDouble(const string& s);
-    vector<double> GetVector();
+    vector<double> MakeVector();
     bool ValidVectors(const vector<double>& v1, const vector<double>& v2);
+    void PopulateVector();
+    std::vector<vector<NameVector>> GetVectors();
+    string GetPath();
+    void SetPath (string NewPath);
 
 };
 

@@ -30,7 +30,7 @@ bool ClassifiedArray::IsValidDouble(const string& s){
  * spaces ,and each space indicates that we move to the next component.
  * @return the fully populated vector.
  */
-vector<double>  ClassifiedArray:: GetVector () {
+vector<double>  ClassifiedArray:: MakeVector () {
     //initialize the BufferEmpty to not be '\n'.
     char BufferEmpty='a';
     double number;
@@ -60,4 +60,16 @@ vector<double>  ClassifiedArray:: GetVector () {
  */
 bool ClassifiedArray::ValidVectors (const vector<double>& v1 ,const vector<double>& v2){
     return v1.size() == v2.size()&&!v1.empty();
+}
+void ClassifiedArray::PopulateVector() {
+    cout<<path;
+}
+vector<vector<NameVector>> ClassifiedArray::GetVectors(){
+    return vectors;
+}
+string ClassifiedArray::GetPath() {
+    return path;
+}
+void ClassifiedArray::SetPath (string NewPath){
+    path=NewPath;
 }
