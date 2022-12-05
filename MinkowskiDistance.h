@@ -4,10 +4,15 @@
 
 #ifndef EX2_MINKOWSKIDISTANCE_H
 #define EX2_MINKOWSKIDISTANCE_H
-
-
-class MinkowskiDistance {
-
+# include <vector>
+# include <cmath>
+# include <string>
+#include <iostream>
+#define P 2
+#include "Distance.h"
+using namespace std;
+class MinkowskiDistance:public Distance  {
+    double distance (vector<double> v1 , vector<double> v2) override;
 };
 
 

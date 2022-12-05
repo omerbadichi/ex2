@@ -10,12 +10,15 @@ class NameVector {
 private:
 ::vector<double> vector;
 string name;
+double DistanceFromVector;
 public:
     NameVector(string name,::vector<double> vector);
     ::vector<double> GetVector();
     string GetName();
     void SetVector (const ::vector<double>& vector1);
     void SetName(string name1);
+    void SetDistanceFromVector(double distance);
+    double GetDistanceFromVector();
 
 };
 

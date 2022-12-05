@@ -4,10 +4,14 @@
 
 #ifndef EX2_EUCLIDEANDISTANCE_H
 #define EX2_EUCLIDEANDISTANCE_H
-
-
-class EuclideanDistance {
-
+# include <vector>
+# include <cmath>
+# include <string>
+#include <iostream>
+#include "Distance.h"
+using namespace std;
+class EuclideanDistance:public Distance  {
+    double distance(vector<double> v1,vector<double> v2) override;
 };
 
 

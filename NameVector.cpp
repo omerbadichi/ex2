@@ -12,3 +12,12 @@ NameVector::NameVector(string name, ::vector<double> vector) {
     this->name=std::move(name);
     this->vector=std::move(vector);
 }
+
+void NameVector::SetDistanceFromVector(double distance) {
+    this->DistanceFromVector=distance;
+}
+
+double NameVector::GetDistanceFromVector() {
+    return this->DistanceFromVector;
+
+}

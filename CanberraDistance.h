@@ -4,10 +4,14 @@
 
 #ifndef EX2_CANBERRADISTANCE_H
 #define EX2_CANBERRADISTANCE_H
-
-
-class CanberraDistance {
-    double canberra(vector<double> v1, vector<double> v2);
+# include <vector>
+# include <cmath>
+# include <string>
+#include <iostream>
+#include "Distance.h"
+using namespace std;
+class CanberraDistance: public Distance {
+    double distance(vector<double> v1,vector<double> v2) override;
 
 };
 

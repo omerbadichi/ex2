@@ -4,10 +4,14 @@
 
 #ifndef EX2_MANHATTAN_H
 #define EX2_MANHATTAN_H
-
-
-class ManhattanDistance {
-    double manhattan(vector<double> v1, vector<double> v2);
+# include <vector>
+# include <cmath>
+# include <string>
+#include <iostream>
+#include "Distance.h"
+using namespace std;
+class ManhattanDistance:public Distance  {
+    double distance(vector<double> v1, vector<double> v2) override;
 
 };
 

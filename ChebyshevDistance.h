@@ -4,10 +4,14 @@
 
 #ifndef EX2_CHEBYSHEV_H
 #define EX2_CHEBYSHEV_H
-
-
-class ChebyshevDistance {
-    double chebyshev(vector<double> v1, vector<double> v2);
+# include <vector>
+# include <cmath>
+# include <string>
+#include <iostream>
+#include "Distance.h"
+using namespace std;
+class ChebyshevDistance:public Distance  {
+    double distance(vector<double> v1,vector<double> v2) override;
 
 };
 
