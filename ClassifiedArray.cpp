@@ -3,6 +3,15 @@
 //
 
 #include "ClassifiedArray.h"
+#include <utility>
+# include <vector>
+# include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+ClassifiedArray::ClassifiedArray(string path) {
+    this->path=std::move(path);
+}
 /**
  * the function receives a string and checks weather it can be modified into a double character.
  * @param s the string.
@@ -62,9 +71,34 @@ bool ClassifiedArray::ValidVectors (const vector<double>& v1 ,const vector<doubl
     return v1.size() == v2.size()&&!v1.empty();
 }
 void ClassifiedArray::PopulateVector() {
-    cout<<path;
+    fstream fin;
+    fin.open(this->path,ios::in);
+    string line,temp;
+    while(fin>>temp){
+        stringstream s(temp);
+        vector<double> vec;
+        while(getline(s,line,',')){
+            if(IsValidDouble(line)){
+                vec.push_back(stod(line));
+            }else{
+                NameVector v=NameVector(line,vec);
+                if(vectors.empty())
+                    vectors.push_back(v);
+                else{
+                    if(ValidVectors(vectors.at(0).GetVector(),vec))
+                        vectors.push_back(v);
+                    else{
+                        cout<<"the vectors arent in the same size"<<endl;
+                        exit(0);
+                    }
+
+                }
+            }
+        }
+
+    }
 }
-vector<vector<NameVector>> ClassifiedArray::GetVectors(){
+vector<NameVector> ClassifiedArray::GetVectors(){
     return vectors;
 }
 string ClassifiedArray::GetPath() {

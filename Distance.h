@@ -11,11 +11,8 @@
 using namespace std;
 
 class Distance {
-    double manhattan(vector<double> v1, vector<double> v2);
-    double chebyshev(vector<double> v1, vector<double> v2);
-    double canberra(vector<double> v1, vector<double> v2);
-    double minkowski(vector<double> v1, vector<double> v2,double p=2);
-    double euclidean(vector<double> v1, vector<double> v2);
+public:
+    virtual double distance(vector<double> v1, vector<double> v2)=0;
 };
 
 

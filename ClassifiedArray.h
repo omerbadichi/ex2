@@ -12,16 +12,17 @@
 using namespace std;
 class ClassifiedArray {
 private:
-    vector<vector<NameVector>> vectors;
+    vector<NameVector> vectors;
     Distance distance;
     string path;
 
 public:
+    ClassifiedArray(string path);
     bool IsValidDouble(const string& s);
     vector<double> MakeVector();
     bool ValidVectors(const vector<double>& v1, const vector<double>& v2);
     void PopulateVector();
-    std::vector<vector<NameVector>> GetVectors();
+    std::vector<NameVector> GetVectors();
     string GetPath();
     void SetPath (string NewPath);
 
