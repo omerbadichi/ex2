@@ -9,8 +9,11 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-ClassifiedArray::ClassifiedArray(string path) {
+
+ClassifiedArray::ClassifiedArray(string path,vector<double> ToCompare,int k) {
     this->path=std::move(path);
+    this->ToCompare = std::move(ToCompare);
+    this->k=k;
 }
 /**
  * the function receives a string and checks weather it can be modified into a double character.
@@ -98,6 +101,12 @@ void ClassifiedArray::PopulateVector() {
 
     }
 }
+bool CompareDistance(NameVector v1,NameVector v2){
+    return v1.GetDistanceFromVector()<v2.GetDistanceFromVector();
+}
+void ClassifiedArray::SortByValue(){
+    sort(vectors.begin(),vectors.end(), CompareDistance);
+}
 vector<NameVector> ClassifiedArray::GetVectors(){
     return vectors;
 }
@@ -107,3 +116,6 @@ string ClassifiedArray::GetPath() {
 void ClassifiedArray::SetPath (string NewPath){
     path=NewPath;
 }
+
+
+
