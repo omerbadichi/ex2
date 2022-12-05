@@ -54,6 +54,7 @@ int main(int argc,char* argv[]){
     ClassifiedArray x=ClassifiedArray(argv[2],gg,3,distance1);
     x.PopulateVector();
     x.PopulateDistance();
+    x.SortByValue();
     int i=0;
     while(x.GetVectors().size()>i) {
         cout<<x.GetVectors().at(i).GetDistanceFromVector()<<endl;
