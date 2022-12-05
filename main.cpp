@@ -4,9 +4,28 @@
 # include <string>
 #include <iostream>
 #include "ClassifiedArray.h"
+#include "Distance.h"
+#include "ManhattanDistance.h"
 using namespace std;
-bool IsValidDouble(const string& s);
-vector<double>  MakeVector () {
+
+bool IsValidDouble(const string& s){
+    int i=0;
+    bool dot=false;
+    if(s.empty())
+        return false;
+    if(s.at(i)=='-')
+        i++;
+    for(;i<s.size();i++){
+        if(!isdigit(s.at(i))) {
+            if (s.at(i) == '.' && !dot)
+                dot = true;
+            else
+                return false;
+        }
+    }
+    return true;
+}
+vector<double> MakeVector () {
     //initialize the BufferEmpty to not be '\n'.
     char BufferEmpty='a';
     double number;
@@ -28,29 +47,17 @@ vector<double>  MakeVector () {
     }
     return v;
 }
-bool IsValidDouble(const string& s){
-    int i=0;
-    bool dot=false;
-    if(s.empty())
-        return false;
-    if(s.at(i)=='-')
-        i++;
-    for(;i<s.size();i++){
-        if(!isdigit(s.at(i))) {
-            if (s.at(i) == '.' && !dot)
-                dot = true;
-            else
-                return false;
-        }
-    }
-    return true;
-}
 int main(int argc,char* argv[]){
-    vector<double> vl;
-    vl=MakeVector();
-    ClassifiedArray x=ClassifiedArray(argv[2],vl,3);
+    vector<double> gg;
+    gg = MakeVector();
+    Distance *distance1 = new ManhattanDistance;
+    ClassifiedArray x=ClassifiedArray(argv[2],gg,3,distance1);
     x.PopulateVector();
-
-    cout<<"give me vector"<<endl;
-
-}
+    x.PopulateDistance();
+    int i=0;
+    while(x.GetVectors().size()>i) {
+        cout<<x.GetVectors().at(i).GetDistanceFromVector()<<endl;
+        i++;
+    }
+    cout<<i;
+    }
