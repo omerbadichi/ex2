@@ -7,6 +7,7 @@
 #include "Distance.h"
 #include "ManhattanDistance.h"
 using namespace std;
+
 bool IsValidDouble(const string& s){
     int i=0;
     bool dot=false;

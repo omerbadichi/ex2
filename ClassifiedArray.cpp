@@ -9,6 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+
 ClassifiedArray::ClassifiedArray(string path , vector<double> ToCompare, int k, Distance *distance1) {
     this->path=std::move(path);
     this->ToCompare = std::move(ToCompare);
@@ -101,6 +102,12 @@ void ClassifiedArray::PopulateVector() {
 
     }
 }
+bool CompareDistance(NameVector v1,NameVector v2){
+    return v1.GetDistanceFromVector()<v2.GetDistanceFromVector();
+}
+void ClassifiedArray::SortByValue(){
+    sort(vectors.begin(),vectors.end(), CompareDistance);
+}
 vector<NameVector> ClassifiedArray::GetVectors(){
     return vectors;
 }
@@ -117,3 +124,4 @@ void ClassifiedArray::PopulateDistance() {
     }
 
 }
+
