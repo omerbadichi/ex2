@@ -94,10 +94,11 @@ int ClassifiedArray::GetK() {
 }
 
 void ClassifiedArray::SetK(int k) {
-    this->k=k;
-void ClassifiedArray::KNN() {
-    PopulateVector();
-    PopulateDistance();
-    SortByValue();
+    this->k = k;
 }
+    void ClassifiedArray::KNN() {
+        PopulateVector();
+        PopulateDistance();
+        SortByValue();
+    }
 

@@ -24,5 +24,5 @@ int main(int argc,char* argv[]){
         exit(0);
     ClassifiedArray x= ClassifiedArray(argv[2],gg,3,distance1);
     x.KNN();
-    cout<<x.FindClassificition();
+    cout<<x.FindClassification();
     }
