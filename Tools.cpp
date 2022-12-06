@@ -96,5 +96,12 @@ Distance* GetDistanceFun(const string& dis) {
             cout<<"error!";
             exit(0);
     }
+}
+bool IsValidK(const string& s){
 
+    for(char i : s){
+        if(!isdigit(i))
+            return false;
+    }
+    return true;
 }
