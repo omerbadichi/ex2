@@ -30,8 +30,15 @@ void ClassifiedArray::PopulateVector() {
                 vec.push_back(stod(line));
             }else{
                 NameVector v=NameVector(line,vec);
-                if(vectors.empty())
-                    vectors.push_back(v);
+                if(vectors.empty()) {
+//                    if(ValidVectors(this->ToCompare,vec)) {
+                        vectors.push_back(v);
+//                    }
+//                    else{
+//                        cout<<"invalid vector";
+//                        exit(0);
+//                    }
+                }
                 else{
                     if(ValidVectors(vectors.at(0).GetVector(),vec))
                         vectors.push_back(v);
@@ -98,6 +105,10 @@ void ClassifiedArray::SetK(int k) {
 }
 string ClassifiedArray::KNN() {
         PopulateVector();
+        if(!ValidVectors(this->ToCompare,this->vectors.at(0).GetVector())){
+            cout<<"invalid vector"<<endl;
+            exit(0);
+        }
         PopulateDistance();
         SortByValue();
     return FindClassification();
