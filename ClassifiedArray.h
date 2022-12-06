@@ -10,6 +10,7 @@
 #include "Distance.h"
 #include "NameVector.h"
 #include <algorithm>
+#include <map>
 using namespace std;
 class ClassifiedArray {
 private:
@@ -30,12 +31,16 @@ public:
     std::vector<NameVector> GetVectors();
     string GetPath();
     void SetPath (string NewPath);
+    int GetK();
+    void SetK (int k);
+
 
     void SortByValue();
 
     void PopulateDistance ();
 
 
+    string FindClassification();
 };
 
 

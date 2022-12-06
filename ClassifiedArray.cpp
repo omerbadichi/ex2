@@ -102,6 +102,25 @@ void ClassifiedArray::PopulateVector() {
 
     }
 }
+string ClassifiedArray::FindClassification(){
+    map<string,int> map;
+    for(int i=0;i<this->k;i++){
+        if(map.count(this->vectors.at(i).GetName())){
+            map.at(this->vectors.at(i).GetName())++;
+        }else{
+            map.insert({this->vectors.at(i).GetName(),1});
+        }
+}
+    string curr;
+    int max=0;
+    for(auto & it : map){
+        if(max<it.second) {
+            curr = it.first;
+            max=it.second;
+        }
+    }
+    return curr;
+}
 bool CompareDistance(NameVector v1,NameVector v2){
     return v1.GetDistanceFromVector()<v2.GetDistanceFromVector();
 }
@@ -123,5 +142,13 @@ void ClassifiedArray::PopulateDistance() {
         vectors.at(i).SetDistanceFromVector(distance->distance(ToCompare,vectors.at(i).GetVector()));
     }
 
+}
+
+int ClassifiedArray::GetK() {
+    return this->k;
+}
+
+void ClassifiedArray::SetK(int k) {
+    this->k=k;
 }
 
