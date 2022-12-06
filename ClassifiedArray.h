@@ -32,12 +32,9 @@ public:
 
     void SortByValue();
     void PopulateDistance ();
-
-
-
     string FindClassification();
 
-    void KNN ();
+    string KNN ();
 
 };
 
