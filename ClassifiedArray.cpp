@@ -101,5 +101,7 @@ string ClassifiedArray::KNN() {
         PopulateDistance();
         SortByValue();
     return FindClassification();
+
 }
+   
 
