@@ -19,6 +19,8 @@ distances whatDistance (const string& dis){
     if (dis == "CHB") {return CHB;}
     if (dis == "CAN") {return CAN;}
     if (dis == "MIN") {return MIN;}
+    cout<<"error!";
+    exit(0);
 }
 /**
  * the function receives a string and checks weather it can be modified into a double character.
@@ -92,13 +94,9 @@ Distance* GetDistanceFun(const string& dis) {
             return new CanberraDistance;
         case MIN:
             return new MinkowskiDistance;
-        default:
-            cout<<"error!";
-            exit(0);
     }
 }
 bool IsValidK(const string& s){
-
     for(char i : s){
         if(!isdigit(i))
             return false;
