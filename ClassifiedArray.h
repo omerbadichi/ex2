@@ -21,26 +21,24 @@ private:
     int k;
 
 public:
-
     ClassifiedArray(string path, vector<double> ToCompare, int k, Distance *distance1);
-
-    bool IsValidDouble(const string& s);
-    vector<double> MakeVector();
-    bool ValidVectors(const vector<double>& v1, const vector<double>& v2);
     void PopulateVector();
     std::vector<NameVector> GetVectors();
     string GetPath();
     void SetPath (string NewPath);
+
     int GetK();
     void SetK (int k);
 
-
     void SortByValue();
-
     void PopulateDistance ();
 
 
+
     string FindClassification();
+
+    void KNN ();
+
 };
 
 
