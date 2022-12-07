@@ -62,6 +62,7 @@ bool ValidVectors (const vector<double>& v1 ,const vector<double>& v2){
 vector<double> MakeVector () {
     //initialize the BufferEmpty to not be '\n'.
     char BufferEmpty='a';
+    cout<<"enter a vector"<<endl;
     double number;
     string s;
     vector<double> v;
