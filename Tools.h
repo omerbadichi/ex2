@@ -22,6 +22,7 @@ bool IsValidDouble(const string& s);
 bool ValidVectors (const vector<double>& v1 ,const vector<double>& v2);
 vector<double> MakeVector ();
 Distance* GetDistanceFun(distances dis);
+void IsValidPath (const string& path);
 
 
 
