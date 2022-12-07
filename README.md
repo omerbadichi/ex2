@@ -16,6 +16,11 @@ The only valid input is doubled numbers seperated by whitespaces(no limit on the
 ## Output:
 We return the classification for our given vector, based on his K neighbors(the vectors with the short distance to it).
 For more data about KNN algorithm, we recomand to read:https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%92%D7%95%D7%A8%D7%99%D7%AA%D7%9D_%D7%A9%D7%9B%D7%9F_%D7%A7%D7%A8%D7%95%D7%91
+# The flow of the program:
+We start with a series of checks on the validation of the arguments given in the command line:
+    1)If the k given is a positive integer number.
+    2)If the path is valid and contains a classified data stored in a file.
+    3)If the Norm(a way to calculate distance between vectors) is valid, e.i 
 # How to compile and run:
 First, clone this repository. Then there are two ways:
 
