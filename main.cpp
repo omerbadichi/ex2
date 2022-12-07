@@ -12,14 +12,16 @@
 
 using namespace std;
 int main(int argc,char* argv[]){
-    if(argc!=4){exit(0);}
+    if(argc!=4){
+        cout<<"not enough arguments to run the program"<<endl;
+        exit(0);}
     if(!IsValidK(argv[1])) {
         cout<<"the K invalid!"<<endl;
         exit(0);
     }
     int k= stoi(argv[1]);
     if(k<=0){
-        cout<<"invalid k"<<endl;
+        cout<<"the K invalid!"<<endl;
         exit(0);}
     string path = argv[2];
     Distance *distance1 = GetDistanceFun(whatDistance(argv[3]));
