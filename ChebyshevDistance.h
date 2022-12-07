@@ -10,6 +10,9 @@
 #include <iostream>
 #include "Distance.h"
 using namespace std;
+/**
+ * this class represent chebyshev distance.
+ */
 class ChebyshevDistance:public Distance  {
     double distance(vector<double> v1,vector<double> v2) override;
 

@@ -13,7 +13,11 @@ using namespace std;
 #include "EuclideanDistance.h"
 #include "Tools.h"
 #include <fstream>
-
+/**
+ * this function represent any distance to enum.
+ * @param dis
+ * @return
+ */
 distances whatDistance (const string& dis){
     if (dis == "AUC") {return AUC;}
     if (dis == "MAN") {return MAN;}
@@ -83,7 +87,11 @@ vector<double> MakeVector () {
     }
     return v;
 }
-
+/**
+ * this function return a reference.
+ * @param dis enum that represent type of distance.
+ * @return reference of class distance.
+ */
 Distance* GetDistanceFun(distances dis) {
     switch (dis) {
         case AUC:
@@ -100,6 +108,11 @@ Distance* GetDistanceFun(distances dis) {
     }
     return nullptr;
 }
+/**
+ * check if k is number.
+ * @param s , the string we wont to check.
+ * @return
+ */
 bool IsValidK(const string& s){
     for(char i : s){
         if(!isdigit(i))

@@ -12,6 +12,9 @@
 #include <algorithm>
 #include <map>
 using namespace std;
+/**
+ * responsibly to KNN.
+ */
 class ClassifiedArray {
 private:
     vector<NameVector> vectors;
