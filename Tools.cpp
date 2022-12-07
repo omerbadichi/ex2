@@ -12,6 +12,7 @@ using namespace std;
 #include "ChebyshevDistance.h"
 #include "EuclideanDistance.h"
 #include "Tools.h"
+#include <fstream>
 
 distances whatDistance (const string& dis){
     if (dis == "AUC") {return AUC;}
@@ -105,4 +106,13 @@ bool IsValidK(const string& s){
             return false;
     }
     return true;
+}
+void IsValidPath (const string& path){
+    fstream fin;
+    fin.open(path,ios::in);
+    if(fin) {fin.close();}
+    else {
+        cout<<"invalid path!"<<endl;
+        exit(0);
+    }
 }
