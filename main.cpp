@@ -7,19 +7,13 @@
 #include "ClassifiedArray.h"
 #include "Distance.h"
 #include <cmath>
-#include <fstream>
+
 
 using namespace std;
 int main(int argc,char* argv[]){
-    string path = argv[2];
-    fstream fin;
-    fin.open(path,ios::in);
-    if(fin) {fin.close();}
-    else {
-        cout<<"invalid path!"<<endl;
-        exit(0);
-    }
     if(argc!=4){exit(0);}
+    string path = argv[2];
+    IsValidPath(path);
     Distance *distance1 = GetDistanceFun(whatDistance(argv[3]));
     vector<double> gg;
     if(!IsValidK(argv[1])) {
