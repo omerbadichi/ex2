@@ -107,12 +107,3 @@ bool IsValidK(const string& s){
     }
     return true;
 }
-void IsValidPath (const string& path){
-    fstream fin;
-    fin.open(path,ios::in);
-    if(fin) {fin.close();}
-    else {
-        cout<<"invalid path!"<<endl;
-        exit(0);
-    }
-}

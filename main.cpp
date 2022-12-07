@@ -13,19 +13,24 @@
 using namespace std;
 int main(int argc,char* argv[]){
     if(argc!=4){exit(0);}
-    string path = argv[2];
-    IsValidPath(path);
-    Distance *distance1 = GetDistanceFun(whatDistance(argv[3]));
-    vector<double> gg;
     if(!IsValidK(argv[1])) {
         cout<<"the K invalid!"<<endl;
         exit(0);
     }
     int k= stoi(argv[1]);
-    if(k<=0){exit(0);}
-    gg = MakeVector();
+    if(k<=0){
+        cout<<"invalid k"<<endl;
+        exit(0);}
+    string path = argv[2];
+    Distance *distance1 = GetDistanceFun(whatDistance(argv[3]));
+    vector<double> gg;
     ClassifiedArray x= ClassifiedArray(argv[2],gg,k,distance1);
-    cout << x.KNN() <<endl;
+    x.PopulateVector();
+    while (true) {
+        gg = MakeVector();
+        x.SetVectorToCompare(gg);
+        cout << x.KNN() << endl;
+    }
 }
 
 
