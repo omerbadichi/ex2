@@ -52,6 +52,7 @@ void ClassifiedArray::PopulateVector() {
         }
 
     }
+    fin.close();
 }
 string ClassifiedArray::FindClassification(){
     map<string,int> map;
@@ -89,8 +90,14 @@ void ClassifiedArray::SetPath (string NewPath){
 }
 
 void ClassifiedArray::PopulateDistance() {
-    for (int i = 0; i < this->vectors.size(); ++i) {
-        vectors.at(i).SetDistanceFromVector(distance->distance(ToCompare,vectors.at(i).GetVector()));
+    if(ValidVectors(this->ToCompare,this->vectors.at(0).GetVector())) {
+        for (int i = 0; i < this->vectors.size(); ++i) {
+            vectors.at(i).SetDistanceFromVector(distance->distance(ToCompare, vectors.at(i).GetVector()));
+        }
+    }
+    else{
+        cout<<"invalid vector!"<<endl;
+        exit(0);
     }
 
 }
@@ -104,13 +111,9 @@ void ClassifiedArray::SetK(int k) {
     this->k = k;
 }
 string ClassifiedArray::KNN() {
-        PopulateVector();
-        if(!ValidVectors(this->ToCompare,this->vectors.at(0).GetVector())){
-            cout<<"invalid vector"<<endl;
-            exit(0);
-        }
-        PopulateDistance();
-        SortByValue();
+    PopulateVector();
+    PopulateDistance();
+    SortByValue();
     return FindClassification();
 
 }

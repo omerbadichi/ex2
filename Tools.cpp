@@ -19,7 +19,7 @@ distances whatDistance (const string& dis){
     if (dis == "CHB") {return CHB;}
     if (dis == "CAN") {return CAN;}
     if (dis == "MIN") {return MIN;}
-    cout<<"error!";
+    cout<<"invalid distance!";
     exit(0);
 }
 /**
@@ -83,8 +83,8 @@ vector<double> MakeVector () {
     return v;
 }
 
-Distance* GetDistanceFun(const string& dis) {
-    switch (whatDistance(dis)) {
+Distance* GetDistanceFun(distances dis) {
+    switch (dis) {
         case AUC:
             return new EuclideanDistance;
         case MAN:
@@ -95,7 +95,9 @@ Distance* GetDistanceFun(const string& dis) {
             return new CanberraDistance;
         case MIN:
             return new MinkowskiDistance;
+
     }
+    return nullptr;
 }
 bool IsValidK(const string& s){
     for(char i : s){
