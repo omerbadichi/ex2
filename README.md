@@ -17,4 +17,18 @@ The only valid input is doubled numbers seperated by whitespaces(no limit on the
 We return the classification for our given vector, based on his K neighbors(the vectors with the short distance to it).
 For more data about KNN algorithm, we recomand to read:https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%92%D7%95%D7%A8%D7%99%D7%AA%D7%9D_%D7%A9%D7%9B%D7%9F_%D7%A7%D7%A8%D7%95%D7%91
 # How to compile and run:
-In order to make the proccess easier we made a makefile project, and all that is left to do is to type "make".
+First, clone this repository. Then there are two ways:
+
+##### 1) Using makefile:
+         a) Open the project folder in the terminal and type in 'make' and start to
+         follow the programs orders.
+         b)Than write ./a.out [k(a positive integer)] [path(the address of the classified file)] [Norm(a way to calculate distance between vectors)] 
+         c) In order to clean the exe and o files, type 'make clean' in terminal.        
+
+##### 2) Writing the orders manualy:
+        a)Open the project folder in the terminal and type in these orders:
+        b)g++ -std=c++11 *.cpp -o a.out
+        c)Than write ./a.out [k(a positive integer)] [path(the address of the classified file)] [Norm(a way to calculate distance between vectors)] 
+        d)In order to clean the exe and o files,type:
+          1)rm -rf *.o
+          2)rm -rf a.out
