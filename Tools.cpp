@@ -63,6 +63,7 @@ bool ValidVectors (const vector<double>& v1 ,const vector<double>& v2){
 vector<double> MakeVector () {
     //initialize the BufferEmpty to not be '\n'.
     char BufferEmpty='a';
+    cout<<"enter a vector"<<endl;
     double number;
     string s;
     vector<double> v;
@@ -105,13 +106,4 @@ bool IsValidK(const string& s){
             return false;
     }
     return true;
-}
-void IsValidPath (const string& path){
-    fstream fin;
-    fin.open(path,ios::in);
-    if(fin) {fin.close();}
-    else {
-        cout<<"invalid path!"<<endl;
-        exit(0);
-    }
 }

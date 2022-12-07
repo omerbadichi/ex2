@@ -26,6 +26,7 @@ public:
     std::vector<NameVector> GetVectors();
     string GetPath();
     void SetPath (string NewPath);
+    void SetVectorToCompare (vector<double> ToCompare);
 
     int GetK();
     void SetK (int k);

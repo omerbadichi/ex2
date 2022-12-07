@@ -21,6 +21,10 @@ ClassifiedArray::ClassifiedArray(string path , vector<double> ToCompare, int k, 
 void ClassifiedArray::PopulateVector() {
     fstream fin;
     fin.open(this->path,ios::in);
+    if(!fin){
+        cout<<"invalid path!"<<endl;
+        exit(0);
+    }
     string line,temp;
     while(fin>>temp){
         stringstream s(temp);
@@ -31,13 +35,7 @@ void ClassifiedArray::PopulateVector() {
             }else{
                 NameVector v=NameVector(line,vec);
                 if(vectors.empty()) {
-//                    if(ValidVectors(this->ToCompare,vec)) {
                         vectors.push_back(v);
-//                    }
-//                    else{
-//                        cout<<"invalid vector";
-//                        exit(0);
-//                    }
                 }
                 else{
                     if(ValidVectors(vectors.at(0).GetVector(),vec))
@@ -111,11 +109,16 @@ void ClassifiedArray::SetK(int k) {
     this->k = k;
 }
 string ClassifiedArray::KNN() {
-    PopulateVector();
     PopulateDistance();
     SortByValue();
     return FindClassification();
 
 }
+
+void ClassifiedArray::SetVectorToCompare(vector<double> ToCompare) {
+    this->ToCompare=std::move(ToCompare);
+
+}
+
    
 
