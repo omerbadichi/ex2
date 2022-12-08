@@ -31,7 +31,7 @@ public:
     void SetPath (string NewPath);
     void SetVectorToCompare (const vector<double>& vector);
 
-    int GetK();
+    int GetK() const;
     void SetK (int k);
 
     void SortByValue();

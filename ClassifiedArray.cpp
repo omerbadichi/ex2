@@ -139,7 +139,7 @@ void ClassifiedArray::PopulateDistance() {
  * getter.
  * @return the number of nearest to neighbors we wont.
  */
-int ClassifiedArray::GetK() {
+int ClassifiedArray::GetK() const {
     return this->k;
 }
 /**
