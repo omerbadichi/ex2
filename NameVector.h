@@ -6,6 +6,9 @@
 # include <vector>
 # include <string>
 using namespace std;
+/**
+ * this class obtains the classification and characters of a classified data.
+ */
 class NameVector {
 private:
 ::vector<double> vector;

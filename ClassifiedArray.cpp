@@ -10,14 +10,22 @@
 #include <fstream>
 #include <sstream>
 #include "Tools.h"
-
+/**
+ * contractor.
+ * @param path , the path of file.
+ * @param ToCompare  , the vector that we wont to compare.
+ * @param k, how macy nearest to neighbors ww wont.
+ * @param distance1 , the distance we wont to calculate.
+ */
 ClassifiedArray::ClassifiedArray(string path , vector<double> ToCompare, int k, Distance *distance1) {
     this->path=std::move(path);
     this->ToCompare = std::move(ToCompare);
     this->k = k;
     this->distance = distance1;
 }
-
+/**
+ * this function get from file the vectors that represent data and insert him to new data base.
+ */
 void ClassifiedArray::PopulateVector() {
     fstream fin;
     fin.open(this->path,ios::in);
@@ -52,6 +60,10 @@ void ClassifiedArray::PopulateVector() {
     }
     fin.close();
 }
+/**
+ * This function check which type data appears most times in first k vectors on data base ofter sort.
+ * @return , type of data the appears most times.
+ */
 string ClassifiedArray::FindClassification(){
     map<string,int> map;
     for(int i=0;i<this->k;i++){
@@ -71,22 +83,45 @@ string ClassifiedArray::FindClassification(){
     }
     return curr;
 }
+/**
+ * compare function for sort.
+ * @param v1 , first vector we wont to compare.
+ * @param v2 , secund vector we wont to compare.
+ * @return if the first smallest than first.
+ */
 bool CompareDistance(NameVector v1,NameVector v2){
     return v1.GetDistanceFromVector()<v2.GetDistanceFromVector();
 }
+/**
+ * this function sort the data base by ascending order the distance between vector to vector we wont to classified.
+ */
 void ClassifiedArray::SortByValue(){
     sort(vectors.begin(),vectors.end(), CompareDistance);
 }
+/**
+ * getter.
+ * @return the data base.
+ */
 vector<NameVector> ClassifiedArray::GetVectors(){
     return vectors;
 }
+/**
+ * getter.
+ * @return the pate of file we wont to read.
+ */
 string ClassifiedArray::GetPath() {
     return path;
 }
+/**
+ * setter.
+ * @param NewPath new path that we wont to update.
+ */
 void ClassifiedArray::SetPath (string NewPath){
     path=std::move(NewPath);
 }
-
+/**
+ * This function update the field of distance in ant data in data base to the distance between him to vector compare.
+ */
 void ClassifiedArray::PopulateDistance() {
     if(ValidVectors(this->ToCompare,this->vectors.at(0).GetVector())) {
         for (int i = 0; i < this->vectors.size(); ++i) {
@@ -100,14 +135,24 @@ void ClassifiedArray::PopulateDistance() {
 
 }
 
-
+/**
+ * getter.
+ * @return the number of nearest to neighbors we wont.
+ */
 int ClassifiedArray::GetK() {
     return this->k;
 }
-
+/**
+ * setter.
+ * @param k   number of nearest to neighbors we wont.
+ */
 void ClassifiedArray::SetK(int k) {
     this->k = k;
 }
+/**
+ * run the all project.
+ * @return
+ */
 string ClassifiedArray::KNN() {
     PopulateDistance();
     SortByValue();
@@ -116,6 +161,11 @@ string ClassifiedArray::KNN() {
 }
 
 void ClassifiedArray::SetVectorToCompare(const vector<double>& vector) {
+/**
+ * setter.
+ * @param ToCompare set the vector.
+ */
+void ClassifiedArray::SetVectorToCompare(vector<double> ToCompare) {
     this->ToCompare=std::move(ToCompare);
 
 }
