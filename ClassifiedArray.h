@@ -9,22 +9,36 @@
 #include <iostream>
 #include "Distance.h"
 #include "NameVector.h"
+#include <algorithm>
+#include <map>
 using namespace std;
+/**
+ * responsibly to KNN.
+ */
 class ClassifiedArray {
 private:
     vector<NameVector> vectors;
-    Distance distance;
+    Distance *distance;
     string path;
+    vector<double> ToCompare;
+    int k;
 
 public:
-    ClassifiedArray(string path);
-    bool IsValidDouble(const string& s);
-    vector<double> MakeVector();
-    bool ValidVectors(const vector<double>& v1, const vector<double>& v2);
+    ClassifiedArray(string path, vector<double> ToCompare, int k, Distance *distance1);
     void PopulateVector();
     std::vector<NameVector> GetVectors();
     string GetPath();
     void SetPath (string NewPath);
+    void SetVectorToCompare (const vector<double>& vector);
+
+    int GetK() const;
+    void SetK (int k);
+
+    void SortByValue();
+    void PopulateDistance ();
+    string FindClassification();
+
+    string KNN ();
 
 };
 

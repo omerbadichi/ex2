@@ -9,70 +9,30 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-ClassifiedArray::ClassifiedArray(string path) {
+#include "Tools.h"
+/**
+ * contractor.
+ * @param path , the path of file.
+ * @param ToCompare  , the vector that we wont to compare.
+ * @param k, how macy nearest to neighbors ww wont.
+ * @param distance1 , the distance we wont to calculate.
+ */
+ClassifiedArray::ClassifiedArray(string path , vector<double> ToCompare, int k, Distance *distance1) {
     this->path=std::move(path);
+    this->ToCompare = std::move(ToCompare);
+    this->k = k;
+    this->distance = distance1;
 }
 /**
- * the function receives a string and checks weather it can be modified into a double character.
- * @param s the string.
- * @return the answer weather the string is a valid double number.
+ * this function get from file the vectors that represent data and insert him to new data base.
  */
-bool ClassifiedArray::IsValidDouble(const string& s){
-    int i=0;
-    bool dot=false;
-    if(s.empty())
-        return false;
-    if(s.at(i)=='-')
-        i++;
-    for(;i<s.size();i++){
-        if(!isdigit(s.at(i))) {
-            if (s.at(i) == '.' && !dot)
-                dot = true;
-            else
-                return false;
-        }
-    }
-    return true;
-}
-/**
- * the function receives from the the user input, and devices it to doubles(if legal) and
- * spaces ,and each space indicates that we move to the next component.
- * @return the fully populated vector.
- */
-vector<double>  ClassifiedArray:: MakeVector () {
-    //initialize the BufferEmpty to not be '\n'.
-    char BufferEmpty='a';
-    double number;
-    string s;
-    vector<double> v;
-    while (BufferEmpty != '\n') {
-        //this line informs to cin to not ignore whitespaces.
-        cin.unsetf(ios_base::skipws);
-        cin >> s;
-        if(IsValidDouble(s)) {
-            number= stod(s);
-        }
-        else{
-            vector<double> empty;
-            return empty;
-        }
-        v.push_back(number);
-        cin >> BufferEmpty;
-    }
-    return v;
-}
-/**
- * check if the vector is same size.
- * @param v1 the first vector.
- * @param v2 the second vector.
- * @return true or false.
- */
-bool ClassifiedArray::ValidVectors (const vector<double>& v1 ,const vector<double>& v2){
-    return v1.size() == v2.size()&&!v1.empty();
-}
 void ClassifiedArray::PopulateVector() {
     fstream fin;
     fin.open(this->path,ios::in);
+    if(!fin){
+        cout<<"invalid path!"<<endl;
+        exit(0);
+    }
     string line,temp;
     while(fin>>temp){
         stringstream s(temp);
@@ -82,8 +42,9 @@ void ClassifiedArray::PopulateVector() {
                 vec.push_back(stod(line));
             }else{
                 NameVector v=NameVector(line,vec);
-                if(vectors.empty())
-                    vectors.push_back(v);
+                if(vectors.empty()) {
+                        vectors.push_back(v);
+                }
                 else{
                     if(ValidVectors(vectors.at(0).GetVector(),vec))
                         vectors.push_back(v);
@@ -97,13 +58,114 @@ void ClassifiedArray::PopulateVector() {
         }
 
     }
+    fin.close();
 }
+/**
+ * This function check which type data appears most times in first k vectors on data base ofter sort.
+ * @return , type of data the appears most times.
+ */
+string ClassifiedArray::FindClassification(){
+    map<string,int> map;
+    for(int i=0;i<this->k;i++){
+        if(map.count(this->vectors.at(i).GetName())){
+            map.at(this->vectors.at(i).GetName())++;
+        }else{
+            map.insert({this->vectors.at(i).GetName(),1});
+        }
+}
+    string curr;
+    int max=0;
+    for(auto & it : map){
+        if(max<it.second) {
+            curr = it.first;
+            max=it.second;
+        }
+    }
+    return curr;
+}
+/**
+ * compare function for sort.
+ * @param v1 , first vector we wont to compare.
+ * @param v2 , secund vector we wont to compare.
+ * @return if the first smallest than first.
+ */
+bool CompareDistance(NameVector v1,NameVector v2){
+    return v1.GetDistanceFromVector()<v2.GetDistanceFromVector();
+}
+/**
+ * this function sort the data base by ascending order the distance between vector to vector we wont to classified.
+ */
+void ClassifiedArray::SortByValue(){
+    sort(vectors.begin(),vectors.end(), CompareDistance);
+}
+/**
+ * getter.
+ * @return the data base.
+ */
 vector<NameVector> ClassifiedArray::GetVectors(){
     return vectors;
 }
+/**
+ * getter.
+ * @return the pate of file we wont to read.
+ */
 string ClassifiedArray::GetPath() {
     return path;
 }
+/**
+ * setter.
+ * @param NewPath new path that we wont to update.
+ */
 void ClassifiedArray::SetPath (string NewPath){
-    path=NewPath;
+    path=std::move(NewPath);
 }
+/**
+ * This function update the field of distance in ant data in data base to the distance between him to vector compare.
+ */
+void ClassifiedArray::PopulateDistance() {
+    if(ValidVectors(this->ToCompare,this->vectors.at(0).GetVector())) {
+        for (int i = 0; i < this->vectors.size(); ++i) {
+            vectors.at(i).SetDistanceFromVector(distance->distance(ToCompare, vectors.at(i).GetVector()));
+        }
+    }
+    else{
+        cout<<"invalid vector!"<<endl;
+        exit(0);
+    }
+
+}
+
+/**
+ * getter.
+ * @return the number of nearest to neighbors we wont.
+ */
+int ClassifiedArray::GetK() const {
+    return this->k;
+}
+/**
+ * setter.
+ * @param k   number of nearest to neighbors we wont.
+ */
+void ClassifiedArray::SetK(int k) {
+    this->k = k;
+}
+/**
+ * run the all project.
+ * @return the vector we classified.
+ */
+string ClassifiedArray::KNN() {
+    PopulateDistance();
+    SortByValue();
+    return FindClassification();
+
+}
+/**
+ * setter.
+ * @param ToCompare set the vector  .
+ */
+void ClassifiedArray::SetVectorToCompare(const vector<double>& vector) {
+    this->ToCompare=std::move(ToCompare);
+}
+
+   
+

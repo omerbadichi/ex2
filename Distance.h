@@ -9,7 +9,9 @@
 # include <string>
 #include <iostream>
 using namespace std;
-
+/**
+ * abstract class that all the distances inheritance.
+ */
 class Distance {
 public:
     virtual double distance(vector<double> v1, vector<double> v2)=0;
