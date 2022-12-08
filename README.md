@@ -46,7 +46,8 @@ First, clone this repository. Then there are two ways:
 ##### 1) Using makefile:
          a) Open the project folder in the terminal and type in 'make' and start to
          follow the programs orders.
-         b)Than write in the command line: ./a.out [k(a positive integer)] [path(the address of the classified file)] [Norm(a way to calculate distance between        vectors)] 
+         b)Than write in the command line:
+         ./a.out [k(a positive integer)] [path(the address of the classified file)] [Norm(a way to calculate distance between vectors)] 
          c) In order to clean the exe and o files, type 'make clean' in terminal.        
 
 ##### 2) Writing the orders manualy:
