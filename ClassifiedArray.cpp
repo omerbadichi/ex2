@@ -151,7 +151,7 @@ void ClassifiedArray::SetK(int k) {
 }
 /**
  * run the all project.
- * @return
+ * @return the vector we classified.
  */
 string ClassifiedArray::KNN() {
     PopulateDistance();
@@ -161,7 +161,7 @@ string ClassifiedArray::KNN() {
 }
 /**
  * setter.
- * @param ToCompare set the vector.
+ * @param ToCompare set the vector  .
  */
 void ClassifiedArray::SetVectorToCompare(const vector<double>& vector) {
     this->ToCompare=std::move(ToCompare);
