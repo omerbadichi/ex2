@@ -139,7 +139,7 @@ void ClassifiedArray::PopulateDistance() {
  * getter.
  * @return the number of nearest to neighbors we wont.
  */
-int ClassifiedArray::GetK() {
+int ClassifiedArray::GetK() const {
     return this->k;
 }
 /**
@@ -163,9 +163,8 @@ string ClassifiedArray::KNN() {
  * setter.
  * @param ToCompare set the vector.
  */
-void ClassifiedArray::SetVectorToCompare(vector<double> ToCompare) {
+void ClassifiedArray::SetVectorToCompare(const vector<double>& vector) {
     this->ToCompare=std::move(ToCompare);
-
 }
 
    

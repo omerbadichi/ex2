@@ -29,9 +29,9 @@ public:
     std::vector<NameVector> GetVectors();
     string GetPath();
     void SetPath (string NewPath);
-    void SetVectorToCompare (vector<double> ToCompare);
+    void SetVectorToCompare (const vector<double>& vector);
 
-    int GetK();
+    int GetK() const;
     void SetK (int k);
 
     void SortByValue();
