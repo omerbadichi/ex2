@@ -159,15 +159,12 @@ string ClassifiedArray::KNN() {
     return FindClassification();
 
 }
-
-void ClassifiedArray::SetVectorToCompare(const vector<double>& vector) {
 /**
  * setter.
  * @param ToCompare set the vector.
  */
-void ClassifiedArray::SetVectorToCompare(vector<double> ToCompare) {
+void ClassifiedArray::SetVectorToCompare(const vector<double>& vector) {
     this->ToCompare=std::move(ToCompare);
-
 }
 
    
