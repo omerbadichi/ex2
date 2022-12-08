@@ -11,6 +11,9 @@
 #define P 2
 #include "Distance.h"
 using namespace std;
+/**
+ * this class represent minkowski distance.
+ */
 class MinkowskiDistance:public Distance  {
     double distance (vector<double> v1 , vector<double> v2) override;
 };

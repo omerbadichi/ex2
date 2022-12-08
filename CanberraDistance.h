@@ -10,10 +10,12 @@
 #include <iostream>
 #include "Distance.h"
 using namespace std;
+/**
+ * this class represent canberra distance.
+ */
 class CanberraDistance: public Distance {
     double distance(vector<double> v1,vector<double> v2) override;
 
 };
-
 
 #endif //EX2_CANBERRADISTANCE_H
