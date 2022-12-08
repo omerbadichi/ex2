@@ -52,7 +52,8 @@ First, clone this repository. Then there are two ways:
 ##### 2) Writing the orders manualy:
         a)Open the project folder in the terminal and type in these orders:
         b)g++ -std=c++11 *.cpp -o a.out
-        c)Than write in the command line: ./a.out [k(a positive integer)] [path(the address of the classified file)] [Norm(a way to calculate distance between vectors)] 
+        c)Than write in the command line:
+        **./a.out [k(a positive integer)] [path(the address of the classified file)] [Norm(a way to calculate distance betweenvectors)]** 
         d)In order to clean the exe and o files,type:
           1)rm -rf *.o
           2)rm -rf a.out
