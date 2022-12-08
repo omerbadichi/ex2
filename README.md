@@ -32,8 +32,8 @@ We start with a series of checks on the validation of the arguments given in the
     
     2)If the path is valid and contains a classified data stored in a file.
     
-    3)If the Norm(a way to calculate distance between vectors) is valid, i.e "AUC"(Euclidean distance)/"MAN"(Manhatten distance)/"CHB"(Chebyshev distance)/
-    "CAN"(Canberra distance) or "MIN"(Minkowski distance).
+    3)If the Norm(a way to calculate distance between vectors) is valid, i.e "AUC"(Euclidean distance)/"MAN"(Manhatten distance)
+    /"CHB"(Chebyshev distance)/"CAN"(Canberra distance) or "MIN"(Minkowski distance).
     
 We than recive from the user a valid vector, and calculate the distance based on the norm he given us to all our classified vectors,
 we than sort our vectors in an ascending order, and from the K(the number from the command line) vectors with the shortest distance(the users vector neighbors)
