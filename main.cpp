@@ -16,21 +16,21 @@ int main(int argc,char* argv[]){
         cout<<"not enough arguments to run the program"<<endl;
         exit(0);}
     if(!IsValidK(argv[1])) {
-        cout<<"the K invalid!"<<endl;
+        cout<<"the K is invalid!"<<endl;
         exit(0);
     }
     int k= stoi(argv[1]);
     if(k<=0){
-        cout<<"the K invalid!"<<endl;
+        cout<<"the K is invalid!"<<endl;
         exit(0);}
     string path = argv[2];
     Distance *distance1 = GetDistanceFun(whatDistance(argv[3]));
-    vector<double> gg;
-    ClassifiedArray x= ClassifiedArray(argv[2],gg,k,distance1);
+    vector<double> vec;
+    ClassifiedArray x= ClassifiedArray(argv[2],vec,k,distance1);
     x.PopulateVector();
     while (true) {
-        gg = MakeVector();
-        x.SetVectorToCompare(gg);
+        vec = MakeVector();
+        x.SetVectorToCompare(vec);
         cout << x.KNN() << endl;
     }
 }
