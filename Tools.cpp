@@ -31,7 +31,7 @@ distances whatDistance (const string& dis){
 /**
  * the function receives a string and checks weather it can be modified into a double character.
  * @param s the string.
- * @return the answer weather the string is a valid double number.
+ * @return if the string ia number, return the number, else throw exception.
  */
 double IsValidDouble(const string& s){
    size_t index;
