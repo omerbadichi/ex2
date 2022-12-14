@@ -8,7 +8,6 @@
 #include "Distance.h"
 #include <cmath>
 
-
 /**
  * run the program.
  */
