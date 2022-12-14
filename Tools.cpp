@@ -13,10 +13,11 @@ using namespace std;
 #include "EuclideanDistance.h"
 #include "Tools.h"
 #include <fstream>
+
 /**
  * this function represent any distance to enum.
  * @param dis
- * @return
+ * @return the distance wanted.
  */
 distances whatDistance (const string& dis){
     if (dis == "AUC") {return AUC;}
@@ -32,22 +33,14 @@ distances whatDistance (const string& dis){
  * @param s the string.
  * @return the answer weather the string is a valid double number.
  */
-bool IsValidDouble(const string& s){
-    int i=0;
-    bool dot=false;
-    if(s.empty())
-        return false;
-    if(s.at(i)=='-')
-        i++;
-    for(;i<s.size();i++){
-        if(!isdigit(s.at(i))) {
-            if (s.at(i) == '.' && !dot)
-                dot = true;
-            else
-                return false;
-        }
-    }
-    return true;
+double IsValidDouble(const string& s){
+   size_t index;
+   double number=stod(s,&index);
+   if(index<s.size()){
+       string message="the vector is invalid";
+       throw std::invalid_argument(message);
+   }
+    return number;
 }
 
 /**
@@ -75,12 +68,11 @@ vector<double> MakeVector () {
         //this line informs to cin to not ignore whitespaces.
         cin.unsetf(ios_base::skipws);
         cin >> s;
-        if(IsValidDouble(s)) {
-            number= stod(s);
-        }
-        else{
-            vector<double> empty;
-            return empty;
+        try{
+            number= IsValidDouble(s);
+        }catch(invalid_argument &e){
+            cout<<"the vector is invalid"<<endl;
+            exit(0);
         }
         v.push_back(number);
         cin >> BufferEmpty;
