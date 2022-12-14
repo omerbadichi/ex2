@@ -10,6 +10,7 @@
 #include <fstream>
 #include <sstream>
 #include "Tools.h"
+
 /**
  * contractor.
  * @param path , the path of file.
@@ -38,9 +39,9 @@ void ClassifiedArray::PopulateVector() {
         stringstream s(temp);
         vector<double> vec;
         while(getline(s,line,',')){
-            if(IsValidDouble(line)){
-                vec.push_back(stod(line));
-            }else{
+            try{
+                vec.push_back(IsValidDouble(line));
+            }catch(invalid_argument &e){
                 NameVector v=NameVector(line,vec);
                 if(vectors.empty()) {
                         vectors.push_back(v);
