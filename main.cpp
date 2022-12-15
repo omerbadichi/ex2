@@ -29,11 +29,19 @@ int main(int argc,char* argv[]){
     vector<double> vec;
     ClassifiedArray x= ClassifiedArray(argv[2],vec,k,distance1);
     x.PopulateVector();
-    while (true) {
-        vec = MakeVector();
-        x.SetVectorToCompare(vec);
-        cout << x.KNN() << endl;
+    if(k>x.GetVectors().size())
+    {
+        cout<<"the K is invalid!"<<endl;
+        exit(0);
+
     }
+    while (true) {
+
+            vec = MakeVector();
+            x.SetVectorToCompare(vec);
+            cout << x.KNN() << endl;
+
+        }
 }
 
 
