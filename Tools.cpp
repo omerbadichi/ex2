@@ -14,7 +14,7 @@ using namespace std;
 #include "EuclideanDistance.h"
 #include "Tools.h"
 #include <limits>
-
+#include <sstream>
 /**
  * this function represent any distance to enum.
  * @param dis
@@ -35,10 +35,10 @@ distances whatDistance (const string& dis){
  * @return if the string ia number, return the number, else throw exception.
  */
 double IsValidDouble(const string& s){
+    string message="the vector is invalid";
     size_t index;
     double number=stod(s,&index);
     if(index<s.size()){
-        string message="the vector is invalid";
         throw invalid_argument(message);
     }
     return number;
@@ -59,27 +59,26 @@ bool ValidVectors (const vector<double>& v1 ,const vector<double>& v2){
  * @return the fully populated vector.
  */
 vector<double> MakeVector () {
-    //initialize the BufferEmpty to not be '\n'.
-    char BufferEmpty='a';
     double number;
-    string s;
+    string s,num;
     vector<double> v;
-    while (BufferEmpty != '\n') {
-        //this line informs to cin to not ignore whitespaces.
-        cin.unsetf(ios_base::skipws);
-        cin >> s;
+    string message="the vector is invalid";
+    getline(cin,s);
+    stringstream temp(s);
+    while(getline(temp,num,' ')){
+        if(num.empty())
+            throw invalid_argument(message);
         try{
-            number= IsValidDouble(s);
+            number= IsValidDouble(num);
         }catch(invalid_argument &e){
-            std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            string message="the vector is invalid";
+          //  std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
             throw invalid_argument(message);
         }
         v.push_back(number);
-        cin >> BufferEmpty;
     }
     return v;
-}
+    }
+
 /**
  * this function return a reference.
  * @param dis enum that represent type of distance.
