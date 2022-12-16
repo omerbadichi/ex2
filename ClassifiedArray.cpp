@@ -36,7 +36,7 @@ void ClassifiedArray::PopulateVector() {
         exit(0);
     }
     string line,temp;
-    while(fin>>temp){
+    while(getline(fin,temp)){
         stringstream s(temp);
         vector<double> vec;
         while(getline(s,line,',')){
@@ -48,8 +48,9 @@ void ClassifiedArray::PopulateVector() {
                     vectors.push_back(v);
                 }
                 else{
-                    if(ValidVectors(vectors.at(0).GetVector(),vec))
+                    if(ValidVectors(vectors.at(0).GetVector(),vec)) {
                         vectors.push_back(v);
+                    }
                     else{
                         cout<<"the vectors arent in the same size"<<endl;
                         exit(0);
