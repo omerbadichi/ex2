@@ -7,6 +7,7 @@
 #include "ClassifiedArray.h"
 #include "Distance.h"
 #include <cmath>
+#include <stdexcept>
 
 /**
  * run the program.
@@ -29,11 +30,24 @@ int main(int argc,char* argv[]){
     vector<double> vec;
     ClassifiedArray x= ClassifiedArray(argv[2],vec,k,distance1);
     x.PopulateVector();
+    if(k>x.GetVectors().size())
+    {
+        cout<<"the K is invalid!"<<endl;
+        exit(0);
+
+    }
     while (true) {
-        vec = MakeVector();
-        x.SetVectorToCompare(vec);
-        cout << x.KNN() << endl;
+        try {
+            cout<<"enter a vector"<<endl;
+            vec = MakeVector();
+            x.SetVectorToCompare(vec);
+            cout << x.KNN() << endl;
+        }catch (invalid_argument &e)
+        {
+            cout << "the vector is invalid!" << endl;
+        }
     }
 }
+
 
 

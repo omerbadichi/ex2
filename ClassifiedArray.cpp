@@ -7,6 +7,7 @@
 # include <vector>
 # include <string>
 #include <iostream>
+#include <stdexcept>
 #include <fstream>
 #include <sstream>
 #include "Tools.h"
@@ -35,7 +36,7 @@ void ClassifiedArray::PopulateVector() {
         exit(0);
     }
     string line,temp;
-    while(fin>>temp){
+    while(getline(fin,temp)){
         stringstream s(temp);
         vector<double> vec;
         while(getline(s,line,',')){
@@ -44,11 +45,12 @@ void ClassifiedArray::PopulateVector() {
             }catch(invalid_argument &e){
                 NameVector v=NameVector(line,vec);
                 if(vectors.empty()) {
-                        vectors.push_back(v);
+                    vectors.push_back(v);
                 }
                 else{
-                    if(ValidVectors(vectors.at(0).GetVector(),vec))
+                    if(ValidVectors(vectors.at(0).GetVector(),vec)) {
                         vectors.push_back(v);
+                    }
                     else{
                         cout<<"the vectors arent in the same size"<<endl;
                         exit(0);
@@ -73,7 +75,7 @@ string ClassifiedArray::FindClassification(){
         }else{
             map.insert({this->vectors.at(i).GetName(),1});
         }
-}
+    }
     string curr;
     int max=0;
     for(auto & it : map){
@@ -130,8 +132,9 @@ void ClassifiedArray::PopulateDistance() {
         }
     }
     else{
-        cout<<"invalid vector!"<<endl;
-        exit(0);
+        string message="the vector is invalid";
+        throw invalid_argument(message);
+
     }
 
 }
@@ -167,6 +170,3 @@ string ClassifiedArray::KNN() {
 void ClassifiedArray::SetVectorToCompare(const vector<double>& vector) {
     this->ToCompare=std::move(vector);
 }
-
-   
-
