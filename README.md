@@ -1,4 +1,6 @@
 # ex2
+First the branch to check is the main branch.
+
 In our second assignment we were asked to classify a given vector based on the machine learning method: KNN.
 ## KNN:
 In order to teach the machine about certain data type,for example a cat, we will first need to classify a lot of images "by hand"(i.e by man)
