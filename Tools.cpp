@@ -5,6 +5,7 @@
 using namespace std;
 #include <string>
 #include <iostream>
+#include <stdexcept>
 #include "Distance.h"
 #include "ManhattanDistance.h"
 #include "MinkowskiDistance.h"
@@ -12,7 +13,7 @@ using namespace std;
 #include "ChebyshevDistance.h"
 #include "EuclideanDistance.h"
 #include "Tools.h"
-#include <fstream>
+#include <limits>
 
 /**
  * this function represent any distance to enum.
@@ -34,12 +35,12 @@ distances whatDistance (const string& dis){
  * @return if the string ia number, return the number, else throw exception.
  */
 double IsValidDouble(const string& s){
-   size_t index;
-   double number=stod(s,&index);
-   if(index<s.size()){
-       string message="the vector is invalid";
-       throw std::invalid_argument(message);
-   }
+    size_t index;
+    double number=stod(s,&index);
+    if(index<s.size()){
+        string message="the vector is invalid";
+        throw invalid_argument(message);
+    }
     return number;
 }
 
@@ -60,7 +61,6 @@ bool ValidVectors (const vector<double>& v1 ,const vector<double>& v2){
 vector<double> MakeVector () {
     //initialize the BufferEmpty to not be '\n'.
     char BufferEmpty='a';
-    cout<<"enter a vector"<<endl;
     double number;
     string s;
     vector<double> v;
@@ -71,8 +71,9 @@ vector<double> MakeVector () {
         try{
             number= IsValidDouble(s);
         }catch(invalid_argument &e){
-            cout<<"the vector is invalid"<<endl;
-            exit(0);
+            std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            string message="the vector is invalid";
+            throw invalid_argument(message);
         }
         v.push_back(number);
         cin >> BufferEmpty;

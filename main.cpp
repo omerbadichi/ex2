@@ -7,6 +7,7 @@
 #include "ClassifiedArray.h"
 #include "Distance.h"
 #include <cmath>
+#include <stdexcept>
 
 /**
  * run the program.
@@ -36,12 +37,17 @@ int main(int argc,char* argv[]){
 
     }
     while (true) {
-
+        try {
+            cout<<"enter a vector"<<endl;
             vec = MakeVector();
             x.SetVectorToCompare(vec);
             cout << x.KNN() << endl;
-
+        }catch (invalid_argument &e)
+        {
+            cout << "the vector is invalid!" << endl;
         }
+    }
 }
+
 
 
